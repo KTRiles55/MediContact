@@ -23,7 +23,7 @@ h1{
   margin-left: 2.5em;
   margin-bottom: auto;
   margin-top: 0.5em;
-  width:38%;
+  width:50%;
 }
 
 .log {
@@ -38,6 +38,17 @@ h1{
 }
 
 .register {
+  float: center;
+  background-color: #f8fafc;
+  margin: 5em;
+  width:25%;
+  height:300px;
+  padding: 80px;
+  margin-top:1em;
+  border-radius: 2%;
+}
+
+.backdrop {
   float:left;
   padding: 1em;
   height:450px;
@@ -55,16 +66,31 @@ h1{
   color : #1f1835;
 }
 
+.menu {
+  width: 8em;
+  background-color: rgb(29, 2, 29);
+  color: white;
+  padding: 1em;
+  font-size: 25px;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 1px;
+  border-color:#030303;
+  cursor: pointer;
+  text-align: center;
+  float:center;
+  display: inline;
+}
+
 input {
   width:240px;
   padding:6px;
   margin-left: 60px;
   margin-bottom: 20px;
+  margin-top:10px;
   border-style: solid;
   border-width: 1px;
   border-color: #030303;
-  border-radius: 8%;
-  
 }
 
 input[type='submit'] {
@@ -76,6 +102,7 @@ input[type='submit'] {
   border-color: #080808;
   font-size: 18px;
   margin:2em;
+  border-radius: 10%;
 }
 
 .request {
@@ -84,6 +111,19 @@ input[type='submit'] {
   background-color: rgba(0,0,0,0);
   border-style: none;
   color: #5840e0;
+}
+
+.action {
+  background-color: rgb(102, 101, 102);
+  color: rgb(253, 251, 253);
+  padding: 12px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 30%;
+  font-size: 30px;
+  width: 5em;
+  font-weight: bold;
+  float:right;
 }
 
 button:hover {
