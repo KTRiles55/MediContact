@@ -1,6 +1,6 @@
 
 :root {
-  --background: #e090eb;
+  --background: #f5f5f5;
   --foreground: #1f1835;
 }
 
@@ -40,7 +40,7 @@ h1{
 .register {
   float: center;
   background-color: #f8fafc;
-  margin: 5em;
+  margin: auto;
   width:25%;
   height:300px;
   padding: 80px;
@@ -61,7 +61,7 @@ h1{
   background-size: 900px;
   background-position-x:70px;
   background-position-y:-20px;
-  background-color: rgba(224, 144, 235, 0.6);
+  background-color: rgba(245, 245, 245, 0.6);
   background-blend-mode: lighten;
   color : #1f1835;
 }
