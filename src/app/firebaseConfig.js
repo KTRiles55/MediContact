@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "[--INSERT API KEY HERE--]",
+  apiKey: "AIzaSyD146uYkzXR1kFCZoQFqjpxywXyYF2JSZw",
   authDomain: "medicontact-6d095.firebaseapp.com",
   projectId: "medicontact-6d095",
   storageBucket: "medicontact-6d095.firebasestorage.app",
