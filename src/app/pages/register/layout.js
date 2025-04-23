@@ -12,6 +12,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+const crypto = require('crypto');
+
 
 export function ThemeProvider({ children}) {
  children = React.Node;
@@ -24,7 +26,7 @@ export function ThemeProvider({ children}) {
 
 async function addDataToDatabase(fname, lname, dob, email, password, message) {
   try {
-    const doc = await addDoc(collection(db, "authentication"), {
+    const doc = await addDoc(collection(db, "Authentication"), {
       first_name: fname,
       last_name: lname,
       birth_date: dob, 
@@ -39,6 +41,29 @@ async function addDataToDatabase(fname, lname, dob, email, password, message) {
   }
 }
 
+async function validateName(name) {
+  let letters = /^[A-Za-z]+$/;
+  return letters.test(name) && (name.length >= 3 && name.length <= 24);
+} 
+
+async function checkPasswordStrength(password) {
+  const power = [1, 2, 3, 4];
+  const width = [5, 10, 15, 20];
+  const specialChars = /[!@#$%^&*()[\]{}?.<>,;:~`\-=_+]/;
+  let numbers = /[0-9]/;
+  let letters = /[A-Za-z]/;
+  
+  return numbers.test(password) && letters.test(password)
+   && specialChars.test(password) && (password.length >= 8 && password.length <= 32);
+}
+
+
+function hashPassword(password) {
+  const hash = crypto.createHash('sha256').update(password).digest('hex');
+  return hash;
+}
+
+
 export default function RegisterLayout({ children }) {
   const router = useRouter();
   const [fname, setFname] = useState("");
@@ -46,19 +71,29 @@ export default function RegisterLayout({ children }) {
   const [dob, setBirthDate] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
 
   const register = async (e) => {
     e.preventDefault();
-    const added = await addDataToDatabase(fname, lname, dob, email, password);
-    if (added) {
-      setFname("");
-      setLname("");
-      setBirthDate("");
-      setEmail("");
-      setPassword("");
+    const checkFname = await validateName(fname);
+    const checkLname = await validateName(lname);
+    const checkPassword = await checkPasswordStrength(password);
 
-      alert("Credentials added to database");
+    if (checkFname && checkLname && checkPassword) {
+      const added = await addDataToDatabase(fname, lname, dob, email, hashPassword(password));
+      if (added) {
+        setFname("");
+        setLname("");
+        setBirthDate("");
+        setEmail("");
+        setPassword("");
+
+        alert("Credentials added to database");
+        router.push('/pages/dashboard');
+      }
+    }
+
+    else {
+      alert("Invalid credentials");
     }
   }
 
@@ -68,7 +103,7 @@ export default function RegisterLayout({ children }) {
         Registration
       </h1>
       <div className="register">
-        <form onSubmit={()=>router.push('/pages/dashboard')}>
+        <form onSubmit={(e) => register(e)}>
           <p className="signupfields">
           <label htmlFor="fname">First name: </label>
           <br/>
@@ -88,6 +123,9 @@ export default function RegisterLayout({ children }) {
           <label htmlFor="password">Password: </label>
           <br/>
           <br/>
+          <br/>
+          <br/>
+          <br/>
           <label htmlFor="re-password">Re-Enter Password: </label>
           <br/>
           <br/>
@@ -101,6 +139,8 @@ export default function RegisterLayout({ children }) {
           <input type="text" id = "email" name="email" placeholder="johnsmith11@gmail.com" onChange={(e) => setEmail(e.target.value)} required></input>
           <br/>
           <input type="password" id="passw" name="passw" placeholder="password101" onChange={(e) => setPassword(e.target.value)} required></input>
+          <p>Strong</p>
+          <svg style={{backgroundColor:'green', height:1 + 'rem', width:20 + 'rem'}}></svg>
           <input type="password" id="re-passw" name="re-passw" placeholder="password101" required></input>
           <input type="submit" id='signup' name='signup' value='Sign Up'></input>
           <button className='request' style={{margin:0}}><Link href="../pages/login">Return to Sign In</Link></button>

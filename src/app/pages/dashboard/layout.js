@@ -6,7 +6,7 @@ import Footer from "Components/Footer.js";
 import { lora, eb_garamond } from "Components/font.js";
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import Link from 'next/link';
-import { db } from '../.././firebaseConfig.js';
+import { db } from 'scripts/firebaseConfig.js';
 import { collection, addDoc } from 'firebase/firestore';
 import * as React from 'react';
 import { useState } from 'react';
