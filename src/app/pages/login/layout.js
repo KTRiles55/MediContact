@@ -1,9 +1,9 @@
 "use client"
 
-import "../.././globals.css";
-import Header from "../.././Components/Header.js";
-import Footer from "../.././Components/Footer.js";
-import { lora, eb_garamond } from "../.././Components/font.js";
+import "globals.css";
+import Header from "Components/Header.js";
+import Footer from "Components/Footer.js";
+import { lora, eb_garamond } from "Components/font.js";
 import * as React from 'react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import Link from 'next/link';

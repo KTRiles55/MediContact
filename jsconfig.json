@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+      "Components/*": ["./src/app/Components/*"],
+      "globals.css": ["./src/app/globals.css"]
+    },
+    "baseUrl": "."
   }
 }

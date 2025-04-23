@@ -42,7 +42,7 @@ h1{
   background-color: #f8fafc;
   margin: auto;
   width:25%;
-  height:300px;
+  height:500px;
   padding: 80px;
   margin-top:1em;
   border-radius: 2%;
@@ -84,14 +84,24 @@ h1{
 
 input {
   width:240px;
-  padding:6px;
+  padding:12px;
   margin-left: 60px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top:10px;
   border-style: solid;
   border-width: 1px;
   border-color: #030303;
 }
+
+.signupfields {
+  margin-right: 0.2em; 
+  margin-left: 2em; 
+  float:left; 
+  width: 6em; 
+  font-weight:bold; 
+  font-size: 18;
+}
+
 
 input[type='submit'] {
   width:220px;

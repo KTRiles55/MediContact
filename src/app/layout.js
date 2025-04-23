@@ -1,8 +1,8 @@
-import "./globals.css";
+import "globals.css";
 import Link from "next/link";
-import Header from "./Components/Header.js";
-import Footer from "./Components/Footer.js";
-import { lora } from "./Components/font.js";
+import Header from "Components/Header.js";
+import Footer from "Components/Footer.js";
+import { lora } from "Components/font.js";
 import * as React from 'react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
