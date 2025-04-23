@@ -11,6 +11,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import * as React from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { hashPassword } from 'utils/hash';
 
 const crypto = require('crypto');
 
@@ -58,12 +59,6 @@ async function checkPasswordStrength(password) {
 }
 
 
-function hashPassword(password) {
-  const hash = crypto.createHash('sha256').update(password).digest('hex');
-  return hash;
-}
-
-
 export default function RegisterLayout({ children }) {
   const router = useRouter();
   const [fname, setFname] = useState("");
@@ -88,7 +83,7 @@ export default function RegisterLayout({ children }) {
         setPassword("");
 
         alert("Credentials added to database");
-        router.push('/pages/dashboard');
+        router.push('/pages/login');
       }
     }
 

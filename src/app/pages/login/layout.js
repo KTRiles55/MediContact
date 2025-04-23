@@ -7,6 +7,12 @@ import { lora, eb_garamond } from "Components/font.js";
 import * as React from 'react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { db } from 'scripts/firebaseConfig.js';
+import { doc, getDoc } from 'firebase/firestore';
+import { hashPassword } from 'utils/hash';
+
 
 export function ThemeProvider({ children}) {
  children = React.Node;
@@ -17,14 +23,35 @@ export function ThemeProvider({ children}) {
  );
 }
 
+
 export default function LoginLayout({ children }) {
+  const router = useRouter();
+  const [email, getEmail] = useState("");
+  const [password, getPassword] = useState("");
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (res.ok) {
+      // Handle success
+      router.push('/dashboard');
+    } else {
+      alert(res.status);
+    }
+  };
+
   return (
       <div>
         <h1>
         Welcome to MediContact!
       </h1>
       <div className="log">
-        <form>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <p style={{marginRight: 1 + 'em', marginLeft: 2 + 'em', float:'left', width: 2 + 'em', fontWeight:'bold', fontSize: 18}}>
           <label htmlFor="email">Email: </label>
           <br/>
@@ -32,10 +59,10 @@ export default function LoginLayout({ children }) {
           <label htmlFor="password">Password: </label>
           </p>
           <p>
-          <input type="text" id = "email" name="email" placeholder="johnsmith11@gmail.com">
+          <input type="text" id = "email" name="email" placeholder="johnsmith11@gmail.com" onChange={(e) => getEmail(e.target.value)}>
           </input>
           <br/>
-          <input type="password" id="passw" name="passw" placeholder="password101">
+          <input type="password" id="passw" name="passw" placeholder="password101" onChange={(e) => getPassword(e.target.value)}>
           </input>
           <button className='request'>Forgot Password?</button>
           </p>
@@ -54,3 +81,4 @@ export default function LoginLayout({ children }) {
         </div>
   );
 }
+
