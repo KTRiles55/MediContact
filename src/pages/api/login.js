@@ -1,27 +1,27 @@
 import { hashPassword } from 'utils/hash'; // your utility function
 import { db } from 'scripts/firebaseConfig';
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 
 export default async function handler(req, res) {
   try{
     if (req.method !== 'POST') return res.status(405).end();
-    console.log(req.body);
     const { email, password } = req.body || {};
     if (!email || !password) {
       return res.status(400).json({ error: "Missing email or password" });
     }
 
-    const userRef = doc(db, 'Authentication', email);
-    const userSnap = await getDoc(userRef);
+    const userRef = collection(db, 'Authentication');
+    const lookup = query(userRef, where('email', '==', email));
+    const userSnap = await getDocs(lookup);
 
-    if (!userSnap.exists()) {
+    if (userSnap.empty) {
       return res.status(401).json({ error: 'User not found' });
     }
 
-    const userData = userSnap.data();
+    const userData = userSnap.docs[0].data();
     const hashed = hashPassword(password);
 
-    if (hashed !== userData.passwordHash) {
+    if (hashed !== userData.password) {
       return res.status(401).json({ error: 'Incorrect password' });
     }
   }

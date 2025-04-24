@@ -39,7 +39,7 @@ export default function LoginLayout({ children }) {
 
     if (res.ok) {
       // Handle success
-      router.push('/dashboard');
+      router.push('/pages/dashboard');
     } else {
       alert(res.status);
     }
