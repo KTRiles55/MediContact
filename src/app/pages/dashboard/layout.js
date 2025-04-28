@@ -26,6 +26,9 @@ export default function DashboardLayout({ children }) {
 
   return (
       <div>
+        <section className="menu">
+          <nav>Dashboard</nav>
+        </section>
         <h1 style={{float:'center', margin:'auto', textAlign:'center'}}>
         Welcome to Medicontact
       </h1>
