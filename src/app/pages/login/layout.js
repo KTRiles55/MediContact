@@ -50,27 +50,27 @@ export default function LoginLayout({ children }) {
         <h1>
         Sign In
       </h1>
+      <div className="login-container-wrapper">
       <div className="parent">
         <div className="child">
         <form onSubmit={(e) => handleSubmit(e)}>
           <p className="labels">
           <label htmlFor="email">Email: </label>
-          <br/>
-          <br/>
-          <label htmlFor="password">Password: </label>
           </p>
-          <p>
           <input type="text" id = "email" name="email" placeholder="johnsmith11@gmail.com" onChange={(e) => getEmail(e.target.value)}>
           </input>
-          <br/>
+        
+          <p className="labels">
+          <label htmlFor="password">Password: </label>
+          </p>
           <input type="password" id="passw" name="passw" placeholder="password101" onChange={(e) => getPassword(e.target.value)}>
           </input>
+         
           <button className='request'>Forgot Password?</button>
-          </p>
           <input type="submit" id='signin' name='signin' value='Sign In'></input>
           <br/>
-          <span style={{margin:4+'rem', textAlign:'center', fontSize:2+'em'}}>Don't have an account?
-          <input type='submit' value="Sign Up" style={{width:20+'rem', margin:1+'rem', backgroundColor: 'rgba(139, 110, 135, 0.0)', borderColor:'white'}} onClick={(e) => {
+          <span style={{margin:4+'rem', textAlign:'center', fontSize:1.5+'em'}}>Don't have an account?
+          <input type='submit' value="Sign Up" style={{width:10+'rem', margin:0.5+'rem', backgroundColor: 'rgba(139, 110, 135, 0.0)', borderColor:'white'}} onClick={(e) => {
             e.preventDefault();
             router.push('/pages/register');
             }}></input>
@@ -79,13 +79,14 @@ export default function LoginLayout({ children }) {
       <ThemeProvider>{ children }</ThemeProvider>
       </div>
       <section>
-        <div style={{padding: 2+'rem', textAlign:'center', fontSize:1.2+'em'}}>
+        <div style={{textAlign:'center', fontSize:1.2+'em'}}>
         <p className="regSection" style={{fontFamily: eb_garamond.variable,
            fontWeight: 'bold', fontSize:4+'em'}}>Seek medical consultation<br/>with no delay!</p>
-        <p className="regSection" style={{marginBottom:7 + 'rem', fontWeight: 'bold', fontSize:1.5+'em'}}>This platform offers you responsive, reliable<br/>and easy-to-navigate appointment booking features.</p>
+        <p className="regSection" style={{fontWeight: 'bold', fontSize:1.5+'em'}}>This platform offers you responsive, reliable<br/>and easy-to-navigate appointment booking features.</p>
         <p className="regSection" style={{fontSize: 2+'em', fontWeight: 'bold'}}>Join us now to keep in contact with your medical providers<br/>and manage bookings.</p>
         </div>
         </section>
+        </div>
         </div>
         </div>
   );

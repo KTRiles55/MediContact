@@ -97,6 +97,7 @@ export default function RegisterLayout({ children }) {
         <h1>
         Registration
       </h1>
+      <br/>
       <div>
         <form onSubmit={(e) => register(e)}>
           <section className="signupfields">
@@ -112,7 +113,7 @@ export default function RegisterLayout({ children }) {
           <input type="date" id='dob' name='dob' onChange={(e) => setBirthDate(e.target.value)} required></input>
           <br/>
           
-          <label htmlFor="email">Email: </label>
+          <label htmlFor="email">Email: </label><br/>
           <input type="text" id = "email" name="email" placeholder="johnsmith11@gmail.com" onChange={(e) => setEmail(e.target.value)} required></input>
           <br/>
 
