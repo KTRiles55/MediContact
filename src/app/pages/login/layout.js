@@ -47,6 +47,10 @@ export default function LoginLayout({ children }) {
 
   return (
       <div className="login-wrap">
+      <button onClick={() => router.push('/')}
+      className='signin' style={{float:'right', padding:0.5+'rem', fontSize:2+'em',
+      color:'white', backgroundColor: 'rgb(53, 5, 47)', borderStyle:'solid',
+      borderRadius:'25%', margin:0.5+'rem'}}>Back to home</button> 
         <h1>
         Sign In
       </h1>
