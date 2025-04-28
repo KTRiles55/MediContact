@@ -46,13 +46,14 @@ export default function LoginLayout({ children }) {
   };
 
   return (
-      <div>
+      <div className="login-wrap">
         <h1>
-        Welcome to MediContact!
+        Sign In
       </h1>
-      <div className="log">
+      <div className="parent">
+        <div className="child">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <p style={{marginRight: 1 + 'em', marginLeft: 2 + 'em', float:'left', width: 2 + 'em', fontWeight:'bold', fontSize: 18}}>
+          <p className="labels">
           <label htmlFor="email">Email: </label>
           <br/>
           <br/>
@@ -67,16 +68,24 @@ export default function LoginLayout({ children }) {
           <button className='request'>Forgot Password?</button>
           </p>
           <input type="submit" id='signin' name='signin' value='Sign In'></input>
-          <span style={{margin:1 + 'em'}}>or</span>
-          <button className='request' style={{margin:0}}><Link href="../pages/register">create an account</Link></button>
+          <br/>
+          <span style={{margin:4+'rem', textAlign:'center', fontSize:2+'em'}}>Don't have an account?
+          <input type='submit' value="Sign Up" style={{width:20+'rem', margin:1+'rem', backgroundColor: 'rgba(139, 110, 135, 0.0)', borderColor:'white'}} onClick={(e) => {
+            e.preventDefault();
+            router.push('/pages/register');
+            }}></input>
+            </span>
         </form>
       <ThemeProvider>{ children }</ThemeProvider>
+      </div>
+      <section>
+        <div style={{padding: 2+'rem', textAlign:'center', fontSize:1.2+'em'}}>
+        <p className="regSection" style={{fontFamily: eb_garamond.variable,
+           fontWeight: 'bold', fontSize:4+'em'}}>Seek medical consultation<br/>with no delay!</p>
+        <p className="regSection" style={{marginBottom:7 + 'rem', fontWeight: 'bold', fontSize:1.5+'em'}}>This platform offers you responsive, reliable<br/>and easy-to-navigate appointment booking features.</p>
+        <p className="regSection" style={{fontSize: 2+'em', fontWeight: 'bold'}}>Join us now to keep in contact with your medical providers<br/>and manage bookings.</p>
         </div>
-        <div className='backdrop'>
-        <p style={{fontFamily: eb_garamond.variable,
-           fontWeight: 'bold', fontSize:45, marginTop:0}}>Seek medical consultation<br/>with no delay!</p>
-        <p style={{marginBottom:7 + 'em', fontWeight: 'bold'}}>This platform offers you responsive, reliable<br/>and easy-to-navigate appointment booking features.</p>
-        <p style={{fontSize: 30, fontWeight: 'bold'}}>Join us now to keep in contact with your medical providers<br/>and manage bookings.</p>
+        </section>
         </div>
         </div>
   );

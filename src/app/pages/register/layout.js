@@ -93,52 +93,40 @@ export default function RegisterLayout({ children }) {
   }
 
   return (
-      <div>
-        <h1 style={{float:'center', margin:'auto', textAlign:'center'}}>
+      <div className="register-wrap">
+        <h1>
         Registration
       </h1>
-      <div className="register">
+      <div>
         <form onSubmit={(e) => register(e)}>
-          <p className="signupfields">
+          <section className="signupfields">
           <label htmlFor="fname">First name: </label>
-          <br/>
-          <br/>
-          <br/>
-          <label htmlFor="lname">Last name: </label>
-          <br/>
-          <br/>
-          <br/>
-          <label htmlFor="dob">Birth date: </label>
-          <br/>
-          <br/>
-          <br/>
-          <label htmlFor="email">Email: </label>
-          <br/>
-          <br/>
-          <label htmlFor="password">Password: </label>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <label htmlFor="re-password">Re-Enter Password: </label>
-          <br/>
-          <br/>
-          </p>
           <input type="text" id='fname' name='fname' placeholder='John' onChange={(e) => setFname(e.target.value)} required></input>
           <br/>
+
+          <label htmlFor="lname">Last name: </label>
           <input type="text" id='lname' name='lname' placeholder='Smith' onChange={(e) => setLname(e.target.value)} required></input>
           <br/>
+
+          <label htmlFor="dob">Birth date: </label>
           <input type="date" id='dob' name='dob' onChange={(e) => setBirthDate(e.target.value)} required></input>
           <br/>
+          
+          <label htmlFor="email">Email: </label>
           <input type="text" id = "email" name="email" placeholder="johnsmith11@gmail.com" onChange={(e) => setEmail(e.target.value)} required></input>
           <br/>
+
+          <label htmlFor="password">Password: </label>
           <input type="password" id="passw" name="passw" placeholder="password101" onChange={(e) => setPassword(e.target.value)} required></input>
-          <p>Strong</p>
-          <svg style={{backgroundColor:'green', height:1 + 'rem', width:20 + 'rem'}}></svg>
+          <br/>
+
+          <label htmlFor="re-password">Re-Enter Password: </label><br/>
           <input type="password" id="re-passw" name="re-passw" placeholder="password101" required></input>
+          <br/>
+          
           <input type="submit" id='signup' name='signup' value='Sign Up'></input>
           <button className='request' style={{margin:0}}><Link href="../pages/login">Return to Sign In</Link></button>
+          </section>
         </form>
       <ThemeProvider>{ children }</ThemeProvider>
         </div>

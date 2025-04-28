@@ -14,8 +14,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html suppressHydrationWarning lang="en" className={lora.className}>
-      <body>
+      <body className="backdrop">
         <Header>
+        <div className="background-layer"></div>
           {children}
         </Header>
         <Footer></Footer>

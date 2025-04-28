@@ -78,8 +78,8 @@ header {
 }
 
 .home-wrap .menu .signin {
-  background-color: rgb(102, 101, 102);
-  color: rgb(253, 251, 253);
+  background-color: rgb(245, 245, 245);
+  color: rgb(54, 4, 54);
   padding: 0.5em;
   border-style: solid;
   border-width: 0.2rem;
@@ -112,89 +112,144 @@ header {
 }
 
 .home-wrap .child section {
-  background-color:white;
+  font-size: 3.5em;
+  color:white;
   margin: 4rem;
 }
 
-.log {
+.home-wrap .child button {
+  border-style: solid;
+  border-color: white;
+  border-width:0.2rem;
+  font-size: 0.8em;
+  color: white;
+  background-color: rgba(209, 162, 201, 0);
+  padding: 1rem;
+  text-shadow: 0.1em 0.1em 0.1em rgb(83, 52, 78);
+  box-shadow: 0.1em 0.1em 0.1em rgb(138, 138, 138);
+}
+
+.login-wrap {
   float: left;
-  background-color: #f8fafc;
-  margin-left: 10em;
-  width:25%;
-  height:300px;
-  padding: 80px;
-  margin-top:1em;
-  border-radius: 2%;
+  width:100%;
+  height:30rem;
+  z-index:1;
+  position: absolute;
 }
 
-.register {
-  float: center;
-  background-color: #f8fafc;
-  margin: auto;
-  width:25%;
-  height:500px;
-  padding: 80px;
-  margin-top:1em;
-  border-radius: 2%;
+.login-wrap h1 {
+  font-size: 5rem;
+  margin:2rem;
+  width:100%;
 }
 
-.back {
-  float:left;
-  padding: 1em;
-  height:450px;
-  width:920px;
-  margin: auto;
-  text-align: center;
-  font-size: 24px;
-  background-image: url("https://www.philips.com.tr/c-dam/b2bhc/master/Specialties/critical-care/solutions/philips-rush-hospital-main-image-thumb.jpg");
-  background-repeat: no-repeat;
-  background-size: 900px;
-  background-position-x:70px;
-  background-position-y:-20px;
-  background-color: rgba(245, 245, 245, 0.6);
-  background-blend-mode: lighten;
-  color : #1f1835;
+.login-wrap .parent {
+  container-name: login-container;
+  container-type: inline-size;
+  display: flex;
+  width: 100%;
+  max-width: 400rem;
+  justify-content: center;
+  align-content: center;
+  margin: 2rem;
 }
 
-input {
-  width:240px;
-  padding:12px;
-  margin-left: 60px;
-  margin-bottom: 10px;
-  margin-top:10px;
+@container login-container (min-width: 10rem) {
+  .login-wrap .child {
+    width: 60%;
+    height: 40rem;
+    margin:auto;
+    background-color:rgba(139, 110, 135, 0.5);
+    display:inline-flex;
+    padding: 4rem;
+    box-shadow: 0.4em 0.4em 0.4em rgba(139, 110, 135, 0.5);
+  }
+}
+
+.login-wrap .child .labels {
+  font-size: 2.2em;
+  color: rgb(5, 5, 5);
+  float: left;
+  margin:3rem;
+}
+
+.login-wrap .child input {
+  padding: 1rem;
+  width:40%;
+  font-size:1.5em;
   border-style: solid;
   border-width: 1px;
   border-color: #030303;
+  margin: 1rem;
 }
 
-.signupfields {
-  margin-right: 0.2em; 
-  margin-left: 2em; 
-  float:left; 
-  width: 6em; 
-  font-weight:bold; 
-  font-size: 18;
-}
-
-
-input[type='submit'] {
-  width:220px;
-  padding:12px;
+.login-wrap .child input[type='submit'] {
+  width:60%;
+  padding: 1.2rem;
+  font-size:2rem;
+  margin:4rem;
+  float:center;
   background-color:#45515e;
   color: #f8fafc;
   border-style: solid;
   border-color: #080808;
-  font-size: 18px;
-  margin:2em;
+  box-shadow: 0.2em 0.2em 0.2em rgba(139, 110, 135, 0.5);
   border-radius: 10%;
 }
 
-.request {
-  margin-top:0;
-  margin-left:20em;
+.login-wrap .child .request {
+  margin-left:15em;
   background-color: rgba(0,0,0,0);
   border-style: none;
   color: #5840e0;
+  font-size:1.5rem;
+}
+
+.login-wrap section {
+  width:100%;
+  max-width:100rem;
+  background-image: url("https://www.philips.com.tr/c-dam/b2bhc/master/Specialties/critical-care/solutions/philips-rush-hospital-main-image-thumb.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(245, 245, 245, 0.6);
+  background-blend-mode: lighten;
+}
+
+.login-wrap .regSection {
+  margin: 5rem;
+}
+
+.register-wrap {
+  float: center;
+  background-color: #f8fafc;
+  margin: auto;
+  width:100%;
+  max-width: 40rem;
+  height:50rem;
+  padding: 2rem;
+  border-radius: 2%;
+  z-index:1;
+  position: absolute;
+}
+
+.register-wrap h1 {
+  float:center; 
+  margin:auto;
+  text-align:center;
+}
+
+.register-wrap input{
+  margin:0.5rem;
+  padding:0.5rem;
+  width:15rem;
+  font-size:1em;
+}
+
+.register-wrap .signupfields {
+  margin:auto;
+  float:center; 
+  width: 6em; 
+  font-size: 18;
 }
 
 button:hover {
@@ -215,4 +270,5 @@ footer {
   position:fixed;
   width:100%;
   text-align:center;
+  z-index:1;
 }

@@ -14,8 +14,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="backdrop">
-      <div className="background-layer"></div>
+    <main>
       <div className="home-wrap">
       <section className="menu">
       <nav>Home</nav>
@@ -28,10 +27,17 @@ const Home = () => {
      <h1>Welcome to MediContact!</h1>
      <div className='parent'>
       <div className='child'>
+      <section style={{fontSize: 3+'em', width: '45%', backgroundColor: 'rgba(50, 20, 65, 0.7)', margin: 0, padding: 5 + 'rem'}}>
+        Here on MediContact, our booking system provides clients with a quick and reliable way to receive medical assistance. Our 24-hour service promptly responds to user requests and connects them to doctors with no delay.
+        </section>
         <section className="prompt">
-          <p>
+          <p style={{margin:'auto'}}>
             Schedule an appointment now!
           </p>
+          <span>
+          <button>Start Booking</button>
+          <button style={{margin:4+'rem', backgroundColor:'rgb(50, 20, 65)', borderRadius:'20%', fontSize:0.6+'em'}}>View Availability</button>
+          </span>
         </section>
       </div>
       </div>
