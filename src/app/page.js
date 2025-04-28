@@ -14,14 +14,28 @@ const Home = () => {
   }, []);
 
   return (
-    <main>
+    <main className="backdrop">
+      <div className="background-layer"></div>
+      <div className="home-wrap">
       <section className="menu">
-      <nav className="menu">Home</nav>
-      <nav className="menu">About us</nav>
+      <nav>Home</nav>
+      <nav>About us</nav>
+      <nav>Find Healthcare</nav>
+      <nav>Contact Us</nav>
     <button onClick={() => router.push('/pages/login')}
-     className='action'>Sign In</button> 
+     className='signin'>Sign In</button> 
      </section>
-     <h1>Homepage</h1>
+     <h1>Welcome to MediContact!</h1>
+     <div className='parent'>
+      <div className='child'>
+        <section className="prompt">
+          <p>
+            Schedule an appointment now!
+          </p>
+        </section>
+      </div>
+      </div>
+      </div>
     </main>
   );
 }
