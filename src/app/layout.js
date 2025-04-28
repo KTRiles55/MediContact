@@ -15,11 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html suppressHydrationWarning lang="en" className={lora.className}>
       <body className="backdrop">
-        <Header>
+        <Header/>
         <div className="background-layer"></div>
           {children}
-        </Header>
-        <Footer></Footer>
+        <Footer/>
       </body>
       </html>
   );

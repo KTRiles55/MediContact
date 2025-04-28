@@ -289,6 +289,13 @@ header {
   text-align: left;
 }
 
+.dashboard-wrap {
+  background-color:white;
+  z-index:2;
+  position:absolute;
+  width:100%;
+}
+
 button:hover {
   cursor: pointer;
 }
