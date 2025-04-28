@@ -1,7 +1,13 @@
-function Dashboard() {
-    return (
-      <h1>Hello</h1>
-    );
-  }
-  
-  export default Dashboard;
+import DashboardLayout from 'Components/DashboardLayout'; // adjust if needed
+
+function DashboardContent() {
+  return <h1>Welcome to MediContact!</h1>;
+}
+
+export default function Dashboard() {
+  return (
+    <DashboardLayout>
+      <DashboardContent />
+    </DashboardLayout>
+  );
+}
