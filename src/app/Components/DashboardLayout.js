@@ -39,7 +39,7 @@ export default function DashboardLayout({ children }) {
         <section className="menu">
           <nav>Home</nav>
           <nav>Schedule</nav>
-          <nav onClick={() => router.push('/pages/dashboard/tabs/Booking')}>Book Appointment</nav>
+          <nav onClick={() => router.push('/pages/views/Patient/dashboard/tabs/booking')}>Book Appointment</nav>
           <nav>Help Center</nav>
           <button onClick={() => handleSignOut(router)}
           className='signin'>Sign Out</button> 

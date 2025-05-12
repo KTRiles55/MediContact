@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 export default function BookingContent() {
   const [loadForm, setLoadForm] = useState(false);
+
     return (
       <div>
       <div className="booking-wrap">
@@ -16,7 +17,11 @@ export default function BookingContent() {
 
       {loadForm && (
         <div className={`popup-form ${loadForm ? 'show' : ''}`}>
+          <script src=
+          "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js">
+        </script>
           <h2 style={{textAlign:'center'}}>Check-In Form</h2>
+          <form method='POST' id='check-in-form'>
           <div className="table">
           <section>
           <label htmlFor='fname'>First name</label><br/>
@@ -46,10 +51,14 @@ export default function BookingContent() {
           </div>
           <label htmlFor='reason'>Reason for visit?</label>
           <textarea id='reason'></textarea>
-          <section style={{display:'flex', width: 24+'rem', height: 10+'rem', padding: 1+'rem', gap:'30rem'}}>
-          <input type='submit' value='Close' onClick={()=>setLoadForm(false)}></input>
-          <input type='submit' value='Submit' onClick={()=>setLoadForm(false)}></input>
+          
+          <label htmlFor='history'>Medical History</label>
+          <textarea id='history'></textarea>
+          <section className='check-in'>
+          <input type='button' value='Close' onClick={()=>setLoadForm(false)}></input>
+          <input type='submit' value='Submit' id='submitForm' onClick={()=>setLoadForm(false)}></input>
           </section>
+          </form>
           </div>
       )}
       </div>

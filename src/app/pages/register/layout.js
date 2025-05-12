@@ -50,7 +50,7 @@ const createUserWithRole = async (email, password, role) => {
   }
 }
 
-async function addDataToDatabase(fname, lname, email, ssn, password) {
+async function addDataToDatabase(fname, lname, email, ssn, password, question, answer) {
   // Check the role that the user is registering as
   const patient = document.getElementById('patient');
   const doctor = document.getElementById('doctor');
@@ -72,7 +72,9 @@ async function addDataToDatabase(fname, lname, email, ssn, password) {
       last_name: lname,
       email: email,
       ssn: ssn,
-      password: password
+      password: password,
+      security_question: question,
+      security_answer: answer
     });
     console.log("Wrote entry to document");
     return true;
@@ -146,6 +148,10 @@ export default function RegisterLayout({ children }) {
   const [ssn, setSSN] = useState("");
   const [password, setPassword] = useState("");
   const [reEnPassword, setReEnPassword] = useState("");
+  const [question, setSecurityQuestion] = useState("");
+  const [answer, setSecurityAnswer] = useState("");
+
+  const [securityQuestions, chooseSecurityQuestions] = useState(false);
 
   const register = async (e) => {
     e.preventDefault();
@@ -159,14 +165,18 @@ export default function RegisterLayout({ children }) {
     else if (checkFname && checkLname && checkPassword) {
       const hashedPassword = hashPassword(password);
       const hashedSSN = crypto.createHash('sha512').update(ssn).digest('hex');
-      
-      const added = await addDataToDatabase(fname, lname, email, hashedSSN, hashedPassword);
+      const hashedQuestion = crypto.createHash("sha256").update(question).digest('hex');
+      const hashedAnswer = crypto.createHash("sha256").update(answer).digest('hex');
+
+      const added = await addDataToDatabase(fname, lname, email, hashedSSN, hashedPassword, hashedQuestion, hashedAnswer);
       if (added) {
         setFname("");
         setLname("");
         setEmail("");
         setSSN("")
         setPassword("");
+        setSecurityQuestion("");
+        setSecurityAnswer("");
 
         alert("New user is registered.");
         router.push('/pages/login');
@@ -231,13 +241,20 @@ export default function RegisterLayout({ children }) {
           <label htmlFor="re-passw">Re-Enter Password </label><br/>
           <input type="password" id="re-passw" name="re-passw" placeholder="password101" onChange={(e) => setReEnPassword(e.target.value)} required></input>
           <br/>
+          <select style={{padding:0.5+'rem'}} id='question' value={question}
+        onChange={(e) => setSecurityQuestion(e.target.value)} required>
+        <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+        <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+        <option value="What is the make and model of your first car?">What is the make and model of your first car?</option>
+        </select>
+        <input type='text' style={{padding:0.3+'rem'}}id='answer' value={answer} onChange={(e) => setSecurityAnswer(e.target.value)} required/>
+          <br/>
           <label htmlFor='role'>Are you signing up as a patient or doctor?</label>
           <section id='role'>
           <button id='patient' ref={buttonRef} className={isActive === 'patient' ? 'active' : ''} onClick={(e)=>toggleButton(e, 'patient')}>Patient</button>
           <button id='doctor' ref={buttonRef} className={isActive === 'doctor' ? 'active' : ''} onClick={(e)=>toggleButton(e, 'doctor')}>Doctor</button>
-          </section>
           <input type="submit" id='signup' name='signup' value='Sign Up'></input>
-          <br/>
+          </section>
           <button className='request' style={{margin:0}}><Link href="../pages/login">Return to Sign In</Link></button>
           </section>
         </form>

@@ -267,6 +267,7 @@ header {
   border-color: #080808;
   box-shadow: 0.2em 0.2em 0.2em rgba(139, 110, 135, 0.5);
   border-radius: 10%;
+  width: 10rem;
 }
 
 .register-wrap .request {
@@ -346,7 +347,7 @@ header {
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     z-index: 10;
     width:40rem;
-    height:40rem;
+    height:fit-content;
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
@@ -372,6 +373,30 @@ header {
   font-size: 1em;
 }
 
+.popup-form .check-in {
+  display: flex;
+  width: 24rem; 
+  height: 10rem; 
+  padding: 1rem; 
+  gap:5rem;
+  justify-self:center;
+  align-self:center;
+}
+
+.popup-form textarea {
+  margin: 1rem;
+  width: 30rem;
+}
+
+.popup-form .securityForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-form .security {
+  width: 20rem;
+}
+
 .popup-form section {
   flex: 1;         /* Make each section grow evenly */
   margin: 0;  
@@ -382,7 +407,8 @@ header {
   pointer-events: auto;
 }
 
-.popup-form input[type='submit'] {
+.popup-form input[type='submit'],
+.popup-form input[type='button'] {
   width:40%;
   padding: 0.5rem;
   font-size:1rem;
@@ -393,6 +419,22 @@ header {
   border-color: #080808;
   box-shadow: 0.2em 0.2em 0.2em rgba(26, 21, 25, 0.5);
   border-radius: 10%;
+}
+
+
+.popup-form section.securitySection {
+  display:flex;
+  width: 24rem; 
+  height: 5rem;
+  padding: 1rem; 
+  gap:5rem;
+  justify-self: center;
+  align-self: center;
+}
+
+.popup-form section.securitySection input[type='submit'].securityButton {
+  margin:auto;
+  width:10rem;
 }
 
 textarea {
