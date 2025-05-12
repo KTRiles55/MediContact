@@ -1,6 +1,7 @@
 import { hashPassword } from 'utils/hash'; // your utility function
 import { db } from 'scripts/firebaseConfig';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import auth from 'scripts/firebaseAdmin';
 
 export default async function handler(req, res) {
   try{

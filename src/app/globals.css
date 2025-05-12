@@ -235,7 +235,7 @@ header {
   transform: translate(-50%, -50%);
   width: 100%;
   max-width: 40rem;
-  height: 40rem;
+  height: 43rem;
   padding: 2rem;
   border-radius: 2%;
   z-index: 1;
@@ -258,7 +258,7 @@ header {
 }
 
 .register-wrap input[type='submit'] {
-  font-size:2rem;
+  font-size:1.2rem;
   margin:1rem;
   float:center;
   background-color: rgb(54, 10, 48);
@@ -275,6 +275,7 @@ header {
   border-style: none;
   color: #5840e0;
   font-size:1.3em;
+  width:12rem;
 }
 
 .register-wrap form {
@@ -287,6 +288,18 @@ header {
   width: 80%;
   font-size: 1rem;
   text-align: left;
+}
+
+.register-wrap button {
+  width: 8rem;
+  height:3rem;
+  font-size: 1.2em;
+  margin:0.5rem;
+  display:inline;
+}
+
+.register-wrap button.active {
+  background-color: rgb(159, 126, 250);
 }
 
 .dashboard-wrap {

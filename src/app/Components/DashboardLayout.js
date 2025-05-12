@@ -5,12 +5,10 @@ import Header from "Components/Header.js";
 import Footer from "Components/Footer.js";
 import { lora, eb_garamond } from "Components/font.js";
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import Link from 'next/link';
-import { db } from 'scripts/firebaseConfig.js';
-import { collection, addDoc } from 'firebase/firestore';
 import * as React from 'react';
-import { useState } from 'react';
+import 'scripts/firebaseConfig.js';
 import { useRouter } from 'next/navigation';
+import { getAuth, signOut } from 'firebase/auth';
 
 
 export function ThemeProvider({ children}) {
@@ -24,6 +22,18 @@ export function ThemeProvider({ children}) {
 
 export default function DashboardLayout({ children }) {
   const router = useRouter();
+
+  async function handleSignOut(router) {
+    const auth = getAuth();
+    try {
+      await signOut(auth);
+      console.log('Successfully signed out.');
+      router.push('/pages/login');
+    } catch(error) {
+      console.error('Failed to sign out: ', error);
+    }
+  }
+
   return (
       <div className="dashboard-wrap">
         <section className="menu">
@@ -31,7 +41,7 @@ export default function DashboardLayout({ children }) {
           <nav>Schedule</nav>
           <nav onClick={() => router.push('/pages/dashboard/tabs/Booking')}>Book Appointment</nav>
           <nav>Help Center</nav>
-          <button onClick={() => router.push('/pages/login')}
+          <button onClick={() => handleSignOut(router)}
           className='signin'>Sign Out</button> 
         </section>
       <div>

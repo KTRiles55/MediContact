@@ -5,7 +5,7 @@
       "Components/*": ["./src/app/Components/*"],
       "globals.css": ["./src/app/globals.css"],
       "utils/*": ["./src/app/utils/*"],
-      "scripts/*": ["scripts/*"],
+      "scripts/*": ["scripts/*"]
     },
     "baseUrl": "."
   }

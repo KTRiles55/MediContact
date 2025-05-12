@@ -9,8 +9,9 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { db } from 'scripts/firebaseConfig.js';
+import 'scripts/firebaseConfig.js';
 import { doc, getDoc } from 'firebase/firestore';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { hashPassword } from 'utils/hash';
 
 
@@ -31,18 +32,44 @@ export default function LoginLayout({ children }) {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const auth = getAuth();
+    const hashedPassw = hashPassword(password);
+    const userCred = await signInWithEmailAndPassword(auth, email, hashedPassw);
+    const user = userCred.user;
+    try {
+    if (user) {
+      const idToken = await user.getIdToken();
+      console.log("User token: ", idToken);
+    }
+    else {
+      console.log("User is not signed in.");
+      return;
+    }
+
     const res = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
 
-    if (res.ok) {
+    const tokenResults = await user.getIdTokenResult();
+    const role = tokenResults.claims.role;
+    if ((res.ok) && (role === 'Patient')) {
       // Handle success
-      router.push('/pages/dashboard');
-    } else {
+      router.push('/pages/views/Patient/dashboard');
+    } 
+    
+    else if ((res.ok) && (role === 'Doctor')) {
+      // Handle success
+      router.push('/pages/views/Doctor/dashboard');
+    }
+
+    else {
       alert(res.status);
     }
+  } catch(err) {
+    console.log("There was a problem signing in: ", err);
+  }
   };
 
   return (
