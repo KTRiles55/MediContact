@@ -1,0 +1,41 @@
+.dashboard-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.card p {
+  margin: 8px 0;
+}
+
+.buttons {
+  margin-top: 12px;
+}
+
+.approve,
+.decline {
+  padding: 8px 14px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.approve {
+  background-color: #28a745;
+}
+
+.decline {
+  background-color: #dc3545;
+}
