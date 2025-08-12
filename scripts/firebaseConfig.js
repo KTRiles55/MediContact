@@ -7,12 +7,12 @@ import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
-  authDomain: "medicontact-6d095.firebaseapp.com",
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-  storageBucket: "medicontact-6d095.firebasestorage.app",
-  messagingSenderId: "1003020297192",
-  appId: "1:1003020297192:web:540620ca72c14790fc7a5d",
-  measurementId: "G-PN9XN2ZM9M",
+  storageBucket: process.env.NEXT_PUBLIC_SB_ID,
+  messagingSenderId: process.env.NEXT_PUBLIC_MS_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASURE_ID,
   databaseURL: process.env.NEXT_PUBLIC_D_ENDPOINT
 };
 
