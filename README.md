@@ -8,7 +8,7 @@ medical professionals and retrieve health records.
 This project aims to offer the best quality medical booking services giving more visibility and information to medical professionals. In order to gain the trust of casual users, this system must contain a highly secure server that will be able to reliably handle a large volume of requests. It will be accessible to both clients and doctors for establishing a two-way booking process:
 
 * Client submits request => Doctor confirms request => Client receives confirmation
-* Clients are given free access to services and are protected by token-based authentication.
+* Clients are given free access to services and are protected by token-based authentication (OAuth 2.0).
 
 ## Main Features
 1.  Patient submits a check-in form before scheduling an appointment.
